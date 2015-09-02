@@ -68,10 +68,10 @@ define([
           var topLft = Utility.getCoordinate(endingPosition, this.endingGirth / 2, Snap.rad(this.offsetAngle - 90));
           var topRgt = Utility.getCoordinate(endingPosition, this.endingGirth / 2, Snap.rad(this.offsetAngle + 90));
          
-          branchGroup.add(snap.path("M" + btmLft.x + " " + btmLft.y +
-                                      "L" + topLft.x + " " + topLft.y + 
-                                      "L" + topRgt.x + " " + topRgt.y + 
-                                      "L" + btmRgt.x + " " + btmRgt.y).attr({
+          branchGroup.add(snap.path("M " + btmLft.x + " " + btmLft.y +
+                                      " L " + topLft.x + " " + topLft.y + 
+                                      " L " + topRgt.x + " " + topRgt.y + 
+                                      " L " + btmRgt.x + " " + btmRgt.y).attr({
                                         "class": "branch"
                                       }));
           

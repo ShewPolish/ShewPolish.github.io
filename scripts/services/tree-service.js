@@ -58,14 +58,24 @@ define([
         var leafCluster = treeSnap.g().attr({ "class": "leaf-cluster" });
         
         /* Spawn leaves for this leaf-cluster. */
-        var asdf = branch.node.pathSegList;
+        var pathSegList = branch.attr("d").split(" ");
+        var topLft = {
+          x: parseFloat(pathSegList[4]),
+          y: parseFloat(pathSegList[5])
+        };
+        
+        var topRgt = {
+          x: parseFloat(pathSegList[7]),
+          y: parseFloat(pathSegList[8])
+        };
+        
         var startingPoint = {
-          x: (branch.node.pathSegList[1].x + branch.node.pathSegList[2].x) / 2,
-          y: (branch.node.pathSegList[1].y + branch.node.pathSegList[2].y) / 2
+          x: (topLft.x + topRgt.x) / 2,
+          y: (topLft.y + topRgt.y) / 2
         };
         
         for (var i = 0; i < config.clusterCount; i++) {
-          var leaf = treeSnap.path("M" + startingPoint.x + " " + startingPoint.y).attr({ "class": "leaf" });
+          var leaf = treeSnap.path("M " + startingPoint.x + " " + startingPoint.y).attr({ "class": "leaf" });
             
           leafCluster.add(leaf);
         }
@@ -80,7 +90,10 @@ define([
       
       Utility.delayIterate(treeSnap.selectAll(".leaf-cluster:nth-child(even)"), function(leafCluster) {
         var angle = Utility.randomBetween(0, 360);
-        var center = leafCluster[0].node.pathSegList[0];
+        var center = {
+          x: leafCluster[0].attr("d").split(" ")[1],
+          y: leafCluster[0].attr("d").split(" ")[2]
+        };
         
         Utility.delayIterate(leafCluster.selectAll(".leaf"), function(leaf, index) {
           var currentAngle = angle + config.angleOffset * index;
@@ -91,9 +104,9 @@ define([
           var midRgt = Utility.getCoordinate(midpoint, config.leafWidth / 2, Snap.rad(currentAngle + 90));
         
           leaf.animate({
-            d: "M" + startpoint.x + " " + startpoint.y +
-               "S" + midLft.x + " " + midLft.y + " " + endpoint.x + " " + endpoint.y +
-               "S" + midRgt.x + " " + midRgt.y + " " + startpoint.x + " " + startpoint.y
+            d: "M " + startpoint.x + " " + startpoint.y +
+               " S " + midLft.x + " " + midLft.y + " " + endpoint.x + " " + endpoint.y +
+               " S " + midRgt.x + " " + midRgt.y + " " + startpoint.x + " " + startpoint.y
           }, config.leafGrowthSpeed);
         }, config.leafGrowthInterval);
       }, config.clusterGrowthInterval);
@@ -104,7 +117,10 @@ define([
       
       Utility.delayIterate(treeSnap.selectAll(".leaf-cluster:nth-child(odd)"), function(leafCluster) {
         var angle = Utility.randomBetween(0, 360);
-        var center = leafCluster[0].node.pathSegList[0];
+        var center = {
+          x: leafCluster[0].attr("d").split(" ")[1],
+          y: leafCluster[0].attr("d").split(" ")[2]
+        };
         
         Utility.delayIterate(leafCluster.selectAll(".leaf"), function(leaf, index) {
           var currentAngle = angle + config.angleOffset * index;
@@ -115,9 +131,9 @@ define([
           var midRgt = Utility.getCoordinate(midpoint, config.leafWidth / 2, Snap.rad(currentAngle + 90));
         
           leaf.animate({
-            d: "M" + startpoint.x + " " + startpoint.y +
-               "S" + midLft.x + " " + midLft.y + " " + endpoint.x + " " + endpoint.y +
-               "S" + midRgt.x + " " + midRgt.y + " " + startpoint.x + " " + startpoint.y
+            d: "M " + startpoint.x + " " + startpoint.y +
+               " S " + midLft.x + " " + midLft.y + " " + endpoint.x + " " + endpoint.y +
+               " S " + midRgt.x + " " + midRgt.y + " " + startpoint.x + " " + startpoint.y
           }, config.leafGrowthSpeed);
         }, config.leafGrowthInterval);
       }, config.clusterGrowthInterval);
@@ -137,14 +153,28 @@ define([
               var leaf = leaves[leafIndex];    
               
               noise.seed(Math.random());
+            
+              var leafPath = leaf.attr("d");
+              leafPath = leafPath.split("C");
+              leafPath = leafPath[0].split(",");
+              var startingPoint = {
+                x: parseFloat(leafPath[0].slice(1, leafPath[0].length)),
+                y: parseFloat(leafPath[1])
+              };
               
-              var startingPoint = leaf.node.pathSegList[0];
-              var path = treeSnap.path(generatePath(treeSnap, 1, "M" + startingPoint.x + "," + startingPoint.y + "S", startingPoint, config.xOffset, config.minYOffset, config.maxYOffset)).attr({ fill: "none" });
+              var path = treeSnap.path(generatePath(treeSnap, 1, "M " + startingPoint.x + " " + startingPoint.y + " S ", startingPoint, config.xOffset, config.minYOffset, config.maxYOffset)).attr({ fill: "none" });
               var leafWrapper = treeSnap.g(leaf);
               
               Snap.animate(0, path.getTotalLength(), function(value) {
                 var movePoint = path.getPointAtLength(value);
-                leafWrapper.transform('t' + parseInt(movePoint.x - leaf.node.pathSegList[0].x) + ',' + parseInt(movePoint.y - leaf.node.pathSegList[0].y) + 'r' + (movePoint.alpha - 90));
+                var leafPathData = leaf.attr("d");
+                leafPathData = leafPathData.slice(1, leafPathData.length);
+                var pathSegListOrigin = {
+                  x: parseFloat(leafPathData.split(",")[0]),
+                  y: parseFloat(leafPathData.split(",")[1])
+                };
+                
+                leafWrapper.transform('t' + parseInt(movePoint.x - pathSegListOrigin.x) + ',' + parseInt(movePoint.y - pathSegListOrigin.y) + 'r' + (movePoint.alpha - 90));
                 
                 if (value > path.getTotalLength() * 2 / 3) {
                   leafWrapper.select("path").attr({
