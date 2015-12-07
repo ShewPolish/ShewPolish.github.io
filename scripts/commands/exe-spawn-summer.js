@@ -3,15 +3,15 @@ define([
   "snap"], function(Utility) {
   "use strict";
   return function($q, treeService) {
-    $("body, .navbar-default").animate({
-      "background-color": "#DFE1D4"
-    }, 1000);
+    // $("body, .navbar-default").animate({
+      // "background-color": "#DFE1D4"
+    // }, 1000);
     
-    $("#main-footer").animate({
-      "background-color": "#959A83",
-      "border-color": "#BBC1A6",
-      color: "#DFE1D4"
-    }, 1000);
+    // $("#main-footer").animate({
+      // "background-color": "#959A83",
+      // "border-color": "#BBC1A6",
+      // color: "#DFE1D4"
+    // }, 1000);
     
     return $q(function(resolve, reject) {
       treeService.matureLeaves({

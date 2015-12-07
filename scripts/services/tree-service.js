@@ -58,7 +58,7 @@ define([
         var leafCluster = treeSnap.g().attr({ "class": "leaf-cluster" });
         
         /* Spawn leaves for this leaf-cluster. */
-        var pathSegList = branch.attr("d").split(" ");
+        var pathSegList = branch.attr("d").split(/[\s,]+/);
         var topLft = {
           x: parseFloat(pathSegList[4]),
           y: parseFloat(pathSegList[5])
@@ -91,8 +91,8 @@ define([
       Utility.delayIterate(treeSnap.selectAll(".leaf-cluster:nth-child(even)"), function(leafCluster) {
         var angle = Utility.randomBetween(0, 360);
         var center = {
-          x: leafCluster[0].attr("d").split(" ")[1],
-          y: leafCluster[0].attr("d").split(" ")[2]
+          x: leafCluster[0].attr("d").split(/[\s,]+/)[1],
+          y: leafCluster[0].attr("d").split(/[\s,]+/)[2]
         };
         
         Utility.delayIterate(leafCluster.selectAll(".leaf"), function(leaf, index) {
@@ -118,8 +118,8 @@ define([
       Utility.delayIterate(treeSnap.selectAll(".leaf-cluster:nth-child(odd)"), function(leafCluster) {
         var angle = Utility.randomBetween(0, 360);
         var center = {
-          x: leafCluster[0].attr("d").split(" ")[1],
-          y: leafCluster[0].attr("d").split(" ")[2]
+          x: leafCluster[0].attr("d").split(/[\s,]+/)[1],
+          y: leafCluster[0].attr("d").split(/[\s,]+/)[2]
         };
         
         Utility.delayIterate(leafCluster.selectAll(".leaf"), function(leaf, index) {
@@ -155,8 +155,9 @@ define([
               noise.seed(Math.random());
             
               var leafPath = leaf.attr("d");
+              leafPath = leafPath.slice(1, leafPath.length).trim();
               leafPath = leafPath.split("C");
-              leafPath = leafPath[0].split(",");
+              leafPath = leafPath[0].split(/[\s,]+/);
               var startingPoint = {
                 x: parseFloat(leafPath[0].slice(1, leafPath[0].length)),
                 y: parseFloat(leafPath[1])
@@ -168,11 +169,8 @@ define([
               Snap.animate(0, path.getTotalLength(), function(value) {
                 var movePoint = path.getPointAtLength(value);
                 var leafPathData = leaf.attr("d");
-                leafPathData = leafPathData.slice(1, leafPathData.length);
-                var pathSegListOrigin = {
-                  x: parseFloat(leafPathData.split(",")[0]),
-                  y: parseFloat(leafPathData.split(",")[1])
-                };
+                leafPathData = leafPathData.slice(1, leafPathData.length).trim();
+                var pathSegListOrigin = startingPoint;
                 
                 leafWrapper.transform('t' + parseInt(movePoint.x - pathSegListOrigin.x) + ',' + parseInt(movePoint.y - pathSegListOrigin.y) + 'r' + (movePoint.alpha - 90));
                 

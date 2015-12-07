@@ -94,7 +94,8 @@ define([
                 }),
                 new Location(location.name, location.abbreviation),
                 experience.startDate, 
-                experience.endDate
+                experience.endDate,
+                _.where(experienceTypeLkpTable, { id: experience.experienceTypeId })[0].name
               );
             })
           );

@@ -30,22 +30,22 @@ body {
   font-weight: bold;
 }
 
-.resume-wrapper {
-  display: table;
+.content-wrapper {
+  position: relative;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 }
 
-.resume {
-  display: table-cell;
-  vertical-align: middle;
-  border-radius: 6px;
+.resume-wrapper {
+  text-align: center;
   height: 100%;
-  opacity: 0.9;
 }
 
-.tab-content {
+.resume {
   height: 100%;
+  opacity: 0.9;
+  text-align: left;
 }
 
 .tab-content > div > h1 {
@@ -54,6 +54,10 @@ body {
 
 #main-footer > p {
   text-align: center;
+}
+
+.experience-type {
+  display: inline;
 }
 
 .experience {
@@ -71,20 +75,31 @@ body {
   font-size: 0.9em;
 }
 
+.exp-type,
 .exp-location,
 .exp-dates {
   text-align: center;
   font-weight: bold;
 }
+
+.fa {
+  text-align: center;
+  width: 100%;
+}
+
+#lightbulb {
+  cursor: grab;
+}
+
+#lightbulb:active {
+  cursor: grabbing;
+}
 /*********** </POSITIONING> ************/
 
 /************ <PALETTE> ************/
-body {
-  background-color: #C4C4C4;
-}
-
+body,
 .navbar-default {
-  background-color: #C4C4C4;
+  background-color: #C5D4C2;
 }
 
 .navbar-default .navbar-brand,
@@ -108,9 +123,9 @@ body {
 }
 
 #main-footer {
-  border-color: #858585;
-  background-color: #676767;
-  color: #C4C4C4;
+  border-color: #89A983;
+  background-color: #6A8565;
+  color: #C5D4C2;
 }
 /*********** </PALETTE> ************/
 
@@ -126,11 +141,6 @@ body {
   border-width: 2px 0 0;
   padding-top: 4px;
   font-size: 0.5em;
-}
-
-.resume-wrapper {
-  width: 100%;
-  padding: 6px;
 }
 
 .resume {
@@ -152,11 +162,6 @@ body {
     border-width: 4px 0 0;
     padding-top: 12px;
     font-size: 0.6em;
-  }
-  
-  .resume-wrapper {
-    width: 90%;
-    padding: 12x;
   }
   
   .resume {
@@ -183,16 +188,6 @@ body {
     font-size: 0.7em;
   }
   
-  .resume-wrapper {
-    width: 80%;
-    padding: 18px;
-  }
-  
-  .resume {
-    width: 700px;
-    padding: 3px;
-  }
-  
   #profile-picture {
     margin-right: 3px;
   }
@@ -209,16 +204,6 @@ body {
     border-width: 8px 0 0;
     padding-top: 40px;
     font-size: 0.8em;
-  }
-  
-  .resume-wrapper {
-    width: 70%;
-    padding: 24px;
-  }
-  
-  .resume {
-    width: 900px;
-    padding: 4px;
   }
   
   #profile-picture {

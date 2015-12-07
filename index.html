@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Shew Polish</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/vendor/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
@@ -28,40 +29,51 @@
           <li><a href="#section-experiences" ng-click="transitionSpring()">Experiences</a></li>
           <li><a href="#section-contact" ng-click="transitionSummer()">Contact</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <i id="lightbulb" class="fa fa-lightbulb-o fa-3x"></i>
+        </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <section id="main-content">
-    <svg id="background-svg"></svg>
-    <svg id="tree-svg"></svg>
-    <div class="resume-wrapper">  
-      <div class="resume">
-        <div class="tab-content">
-          <div id="section-about" class="tab-pane active">
-            <h1>About</h1><hr>
-            <!--<img id="profile-picture" src="images/brandon-shewmake.jpg"></img>-->
-            <p>Vivamus blandit vehicula congue. Curabitur pulvinar odio ut justo cursus, et lobortis metus pretium. Vivamus sed dignissim ligula, et convallis augue. Morbi finibus est sit amet arcu commodo, eu lacinia nunc facilisis. Curabitur a pretium libero, ac maximus ipsum. Sed viverra lectus vitae tortor sagittis ornare. Nulla imperdiet urna vestibulum malesuada euismod. Phasellus rhoncus lobortis turpis, a maximus nulla tempor bibendum. Pellentesque lacinia mi eu neque hendrerit, non ornare risus eleifend. Nunc non cursus massa. Mauris sit amet justo vehicula elit dictum rutrum at nec eros. Aliquam non est ac lectus condimentum porttitor. Nulla facilisi. Curabitur rutrum fringilla tristique. Sed posuere dolor a dolor posuere, in volutpat augue blandit. Aliquam ultrices libero sed fringilla volutpat.</p>
-          </div>
-          <div id="section-experiences" class="tab-pane">
-            <h1>Experiences</h1><hr>
-            <carousel no-wrap="true">
-              <slide ng-repeat="experience in resume.experiences" active="slide.active">
-                <div class="experience">
-                  <p class="exp-description">{{experience.description}}</p><hr>
-                  <p class="exp-skills"><span class="skills-label">Skills:</span> {{experience.skills}}</p>
-                  <p class="exp-location">@ {{experience.location.name}}</p>
-                  <p class="exp-dates">{{experience.startDate.toLocaleString("en-us", { month: "short", year: "numeric" })}}&nbsp;&ndash;&nbsp;{{experience.endDate.toLocaleString("en-us", { month: "short", year: "numeric" })}}</p>
-                </div>
-              </slide>
-            </carousel>
-          </div>
-          <div id="section-contact" class="tab-pane">
-            <h1>Contact</h1><hr>
-            Contact me, bitch.
+      <div class="content-wrapper">
+        <svg id="background-svg"></svg>
+        <svg id="tree-svg"></svg>
+        <div class="resume-wrapper">
+          <div class="resume">
+            <div class="tab-content">
+              <div id="section-about" class="tab-pane active">
+                <h1>About</h1><hr>
+                <p>Vivamus blandit vehicula congue. Curabitur pulvinar odio ut justo cursus, et lobortis metus pretium. Vivamus sed dignissim ligula, et convallis augue. Morbi finibus est sit amet arcu commodo, eu lacinia nunc facilisis. Curabitur a pretium libero, ac maximus ipsum. Sed viverra lectus vitae tortor sagittis ornare. Nulla imperdiet urna vestibulum malesuada euismod. Phasellus rhoncus lobortis turpis, a maximus nulla tempor bibendum. Pellentesque lacinia mi eu neque hendrerit, non ornare risus eleifend. Nunc non cursus massa. Mauris sit amet justo vehicula elit dictum rutrum at nec eros. Aliquam non est ac lectus condimentum porttitor. Nulla facilisi. Curabitur rutrum fringilla tristique. Sed posuere dolor a dolor posuere, in volutpat augue blandit. Aliquam ultrices libero sed fringilla volutpat.</p>
+              </div>
+              <div id="section-experiences" class="tab-pane">
+                <h1>Experiences</h1><hr>
+                <carousel no-wrap="true">
+                  <slide ng-repeat="experience in resume.experiences" active="slide.active">
+                    <div class="experience">
+                      <p class="exp-description">{{experience.description}}</p><hr>
+                      <p class="exp-skills"><span class="skills-label">Skills:</span> {{experience.skills}}</p>
+                      <p class="exp-type">
+                        <i class="experience-type fa fa-home fa-2x" ng-if="experience.type == 'Personal'"></i>
+                        <i class="experience-type fa fa-university fa-2x" ng-if="experience.type == 'Academic'"></i>
+                        <i class="experience-type fa fa-suitcase fa-2x" ng-if="experience.type == 'Professional'"></i>
+                      </p>
+                      <p class="exp-location">@ {{experience.location.name}}</p>
+                      <p class="exp-dates">{{experience.startDate.toLocaleString("en-us", { month: "short", year: "numeric" })}}&nbsp;&ndash;&nbsp;{{experience.endDate.toLocaleString("en-us", { month: "short", year: "numeric" })}}</p>
+                    </div>
+                  </slide>
+                </carousel>
+              </div>
+              <div id="section-contact" class="tab-pane">
+                <h1>Contact</h1><hr>
+                <p><a href="mailto:shew@shewpolish.com"><i class="fa fa-envelope-square fa-4x"></i></a></p>
+                <p><a href="https://www.facebook.com/btshewmake" target="_blank"><i class="fa fa-facebook-official fa-4x"></i></a></p>
+                <p><a href="https://www.linkedin.com/in/shewstr" target="_blank"><i class="fa fa-linkedin-square fa-4x"></i></a></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
   <footer id="main-footer">
     <p>Copyright &copy; 2015, Brandon Shewmake. All rights reserved.</p>

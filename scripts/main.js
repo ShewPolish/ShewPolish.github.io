@@ -92,5 +92,29 @@
       
       e.preventDefault();
     });
+    
+    $("#lightbulb").on("click", function() {
+      if ($(".resume").is(":visible")) {
+        $(".resume").fadeOut(function() {
+          $("body, .navbar-default").animate({
+            "background-color": "#333"
+          }, 2400);
+          
+          $(".navbar-brand, #lightbulb").animate({
+            color: "#E7E7E7"
+          }, 2400);
+        });
+      } else {
+        $(".resume").fadeIn(function() {
+          $("body, .navbar-default").animate({
+            "background-color": "#C5D4C2"
+          }, 2400);
+          
+          $(".navbar-brand, #lightbulb").animate({
+            color: "#333"
+          }, 2400);
+        });
+      }
+    });
   });
 })();

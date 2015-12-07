@@ -1,10 +1,10 @@
 Id,Description,StartDate,EndDate,ExperienceTypeId,DeveloperLocationId
-1,"Refactored a financial account-opening system to support domain-driven design, balancing legacy structures with new structures. ",1/1/2009,1/1/2010,1,1
-2,Designed and developed an ASP.NET MVC web app to spawn shell scripts that automate Syncsort DMX-h and Informatica PowerCenter ETL workflows.,1/2/2009,1/2/2010,1,1
-3,Designed and developed shell scripts to update Informatica PowerCenter ETL workflows' data sources and targets.,1/3/2009,1/3/2010,1,1
-4,"Designed and developed an interactive bubble chart displaying employee utilization via collision-detecting, animated bubbles.",1/4/2009,1/4/2010,1,1
-5,Developed a data-driven web app for users to monitor and manage projects.,1/5/2009,1/5/2010,1,1
-6,Developed the user interface for a web app through which judges score mini-game players and users view results in a leaderboard format.,1/6/2009,1/6/2010,1,1
-7,"Scoped, designed, and developed a virtual ""message in a bottle"" Android app, letting users place and encounter messages while traveling.",1/7/2009,1/7/2010,2,2
-8,"Learned fundamental programming and computer science concepts, along with problem-solving related to computer graphics.",1/8/2009,1/8/2010,2,2
-9,Edited the Guild Wars 2 wiki and created character templates for wiki-editors to display on their user pages.,1/9/2009,1/9/2010,2,2
+1,"Developed a personal website to display professional and academic experiences.",8/1/2015,9/1/2015,3,3
+2,"Refactored a financial account-opening system to support domain-driven design, upgrading it to use newer technologies where needed.",1/2/2009,1/2/2010,1,1
+3,"Designed and developed a web app to spawn shell scripts that automate Syncsort DMX-h and Informatica PowerCenter workflows.",1/3/2009,1/3/2010,1,1
+4,"Designed and developed shell scripts to update Informatica PowerCenter workflows' data sources and targets.",1/4/2009,1/4/2010,1,1
+5,"Designed and developed an interactive bubble chart displaying employee utilization via collision-detecting, animated bubbles.",1/5/2009,1/5/2010,1,1
+6,"Developed a data-driven web app for users to monitor and manage project metadata.",1/6/2009,1/6/2010,1,1
+7,"Developed the user interface for a web app through which judges score mini-game players and users view results in a leaderboard format.",1/1/2015,1/2/2015,1,1
+8,"Scoped, designed, and developed a virtual ""message in a bottle"" Android app, letting users place and encounter messages while traveling.",1/7/2009,1/7/2010,2,2
+9,"Edited the Guild Wars 2 wiki and created character templates for wiki-editors to display on their user pages.",1/9/2009,1/9/2010,3,3

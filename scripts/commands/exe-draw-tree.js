@@ -8,7 +8,7 @@ define([
       
       var snap = Snap("#tree-svg").attr({
         viewBox: "0 0 " + snapDim.width + " " + snapDim.height,
-        preserveAspectRatio: "xMaxYMax meet"
+        preserveAspectRatio: "xMaxYMax"
       });
       
       function Tree2D(girth) {
@@ -52,7 +52,8 @@ define([
               var maxOffsetAngle = (this.offsetAngle + maxPotentialOffset) > maxTotalOffset ? maxTotalOffset : maxPotentialOffset + this.offsetAngle;          
             
               var branch = new Branch2D(this.endingGirth, this.endingGirth * Utility.randomBetween(config.minGirthWeight, config.maxGirthWeight), this.length * Utility.randomBetween(config.minLengthWeight, config.maxLengthWeight), Utility.randomBetween(minOffsetAngle, maxOffsetAngle));
-                
+              
+              config.offsetAngle *= config.offsetWeight;
               branch.grow(config);
               
               this.branches.push(branch);
@@ -85,16 +86,17 @@ define([
       
       var tree = new Tree2D(45);
       var trunk = tree.grow({
-        trunkHeight:          snapDim.height / 3,
+        trunkHeight:          snapDim.height / 3.5,
         trunkOffset:          90,
         minChildren:          1,
         maxChildren:          3,
         minGirth:             5,
         minGirthWeight:       0.55,
-        maxGirthWeight:       0.75,
-        minLengthWeight:      0.65,
+        maxGirthWeight:       0.65,
+        minLengthWeight:      0.75,
         maxLengthWeight:      0.85,
-        offsetAngle:          45,
+        offsetAngle:          30,
+        offsetWeight:         1,
         minTotalOffsetAngle: -15,
         maxTotalOffsetAngle:  195
       });

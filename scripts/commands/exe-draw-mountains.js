@@ -33,7 +33,7 @@ define([
           }
         }
         
-        var path = snap.path(generateMountains(1, "M" + startingPoint.x + "," + startingPoint.y + "L", startingPoint)).attr({ strokeWidth: 1, stroke: "#666", fill: "#999", opacity: 0.5 });
+        var path = snap.path(generateMountains(1, "M" + startingPoint.x + "," + startingPoint.y + "L", startingPoint)).attr({ strokeWidth: 1, stroke: "#444", fill: "#666", opacity: 0.5 });
       })({
         startHeight: 150,
         minXOffset: 15,

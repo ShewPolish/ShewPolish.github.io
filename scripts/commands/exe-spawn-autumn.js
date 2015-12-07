@@ -4,15 +4,15 @@ define([
   "perlin"], function(Utility) {
   "use strict";
   return function($q, treeService) {
-    $("body, .navbar-default").animate({
-      "background-color": "#E1DDD4"
-    }, 1000);
+    // $("body, .navbar-default").animate({
+      // "background-color": "#E1DDD4"
+    // }, 1000);
     
-    $("#main-footer").animate({
-      "background-color": "#9A9483",
-      "border-color": "#C1BAA6",
-      color: "#E1DDD4"
-    }, 1000);
+    // $("#main-footer").animate({
+      // "background-color": "#9A9483",
+      // "border-color": "#C1BAA6",
+      // color: "#E1DDD4"
+    // }, 1000);
     
     return $q(function(resolve, reject) {
       treeService.fallLeaves({
