@@ -95,7 +95,7 @@
     
     $("#lightbulb").on("click", function() {
       if ($(".resume").is(":visible")) {
-        $(".resume").fadeOut(function() {
+        $("#main-content").fadeOut(function() {
           $("body, .navbar-default").animate({
             "background-color": "#333"
           }, 2400);
@@ -105,7 +105,7 @@
           }, 2400);
         });
       } else {
-        $(".resume").fadeIn(function() {
+        $("#main-content").fadeIn(function() {
           $("body, .navbar-default").animate({
             "background-color": "#C5D4C2"
           }, 2400);
